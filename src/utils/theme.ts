@@ -1,13 +1,42 @@
-const spacing = {};
 const colors = {};
 const layout = {};
-const fonts = {};
+
+const spacing = {
+  small: 8,
+  medium: 16,
+  large: 32
+};
+
+const screenSizes = {
+  mobile: 600,
+  ipad: 900,
+  desktop: 1100
+};
+
+const fonts = {
+  title: {
+    family: '"Lato", sans-serif',
+    weight: 700,
+    size: 3
+  },
+  subtitle: {
+    family: '"Lato", sans-serif',
+    weight: 600,
+    size: 2
+  },
+  body: {
+    family: '"Lato", sans-serif',
+    weight: 400,
+    size: 1
+  }
+};
 
 const theme = {
   spacing,
   colors,
   layout,
-  fonts
+  fonts,
+  screenSizes
 };
 
 type Theme = typeof theme;

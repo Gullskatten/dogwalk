@@ -5,11 +5,15 @@ import { ThemeProvider } from 'styled-components';
 import * as serviceWorker from './serviceWorker';
 import theme from './utils/theme';
 import { UserProvider } from './context/User';
+import GlobalStyle from './components/GlobalStyle';
 
 const application = (
   <ThemeProvider theme={theme}>
     <UserProvider>
-      <App />
+      <>
+        <GlobalStyle />
+        <App />
+      </>
     </UserProvider>
   </ThemeProvider>
 );
