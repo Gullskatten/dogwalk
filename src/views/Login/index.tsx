@@ -4,7 +4,6 @@ import useAuth from '../../hooks/useAuth';
 import { Button } from '../../components/Button';
 import Branding from '../../components/Branding';
 import { UserContext } from '../../context/User';
-import Text from '../../components/Text';
 
 const Centerer = styled.div`
   display: flex;
@@ -20,16 +19,10 @@ const Login: React.FunctionComponent = () => {
 
   return (
     <Centerer>
-      {userContext.data.loggingIn ? (
-        <Text variant="subtitle">Logging in....</Text>
-      ) : (
-        <>
-          <Branding />
-          <Button variant="secondary" gutterTop onClick={login}>
-            Log in with Google
-          </Button>
-        </>
-      )}
+      <Branding />
+      <Button variant="secondary" gutterTop onClick={login}>
+        {!userContext.data.hasLoadedUser ? 'Hold on...' : 'Log in with Google'}
+      </Button>
     </Centerer>
   );
 };

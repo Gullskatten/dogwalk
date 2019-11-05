@@ -7,5 +7,5 @@ export interface IUser {
 
 export interface IUserState extends IUser {
   loggedIn: boolean;
-  loggingIn: boolean;
+  hasLoadedUser: boolean;
 }
