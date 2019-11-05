@@ -1,11 +1,11 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import useAuth from '../../hooks/useAuth';
-import { Button } from '../../components/Button';
-import { HorizontalSpacer, VerticalSpacer } from '../../components/Spacers';
-import Branding from '../../components/Branding';
-import { UserContext } from '../../context/User';
-import Text from '../../components/Text';
+import * as React from "react";
+import styled from "styled-components";
+import useAuth from "../../hooks/useAuth";
+import { Button } from "../../components/Button";
+import { HorizontalSpacer, VerticalSpacer } from "../../components/Spacers";
+import Branding from "../../components/Branding";
+import { UserContext } from "../../context/User";
+import Text from "../../components/Text";
 
 const Centerer = styled.div`
   display: flex;
@@ -23,16 +23,12 @@ const Login: React.FunctionComponent = () => {
     <HorizontalSpacer>
       <VerticalSpacer>
         <Centerer>
-          {userContext.data.loggingIn ? (
-            <Text variant="subtitle">Logging in....</Text>
-          ) : (
-            <>
-              <Branding />
-              <Button variant="secondary" gutterTop onClick={login}>
-                Log in with Google
-              </Button>
-            </>
-          )}
+          <Branding />
+          <Button variant="secondary" gutterTop onClick={login}>
+            {!userContext.data.hasLoadedUser
+              ? "Hold on..."
+              : "Log in with Google"}
+          </Button>
         </Centerer>
       </VerticalSpacer>
     </HorizontalSpacer>

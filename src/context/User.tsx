@@ -9,7 +9,7 @@ export const defaultUser: IUserState = {
   loggedIn: false,
   displayName: '',
   email: '',
-  loggingIn: false
+  hasLoadedUser: false
 };
 
 const UserContext = React.createContext({
@@ -22,13 +22,12 @@ const UserProvider: React.FunctionComponent = ({ children }) => {
     ? userStorage.get()
     : defaultUser;
   const [state, setState] = React.useState(defaultUserState);
-  const [loggingIn, setLoggingIn] = React.useState(false);
-
+  const [hasLoadedUser, setHasLoadedUser] = React.useState(false);
+  
   React.useEffect(() => {
     firebaseApp.auth().onAuthStateChanged(async user => {
       if (user) {
         try {
-          setLoggingIn(true);
           await user.getIdToken(true);
 
           const newState = {
@@ -44,15 +43,14 @@ const UserProvider: React.FunctionComponent = ({ children }) => {
         } catch (error) {
           firebaseApp.auth().signOut();
           userStorage.clearItem();
-        } finally {
-          setLoggingIn(false);
         }
       }
+      setHasLoadedUser(true);
     });
   }, []);
 
   const value = {
-    data: { ...state, loggingIn },
+    data: { ...state, hasLoadedUser },
     setData: (nextData: IUserState) => {
       setState(nextData);
     }
