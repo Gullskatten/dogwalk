@@ -29,7 +29,6 @@ const UserProvider: React.FunctionComponent = ({ children }) => {
       if (user) {
         try {
           setLoggingIn(true);
-
           await user.getIdToken(true);
 
           const newState = {
