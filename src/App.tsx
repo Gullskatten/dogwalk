@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { UserContext } from './context/User';
 import Login from './views/Login';
 import Root from './views/Root';
+import ProfileProvider from './context/Profile';
 
 const App: React.FunctionComponent = () => {
   const userContext = React.useContext(UserContext);
@@ -10,9 +11,11 @@ const App: React.FunctionComponent = () => {
   return (
     <BrowserRouter>
       {userContext.data.loggedIn ? (
-        <Switch>
-          <Route exact path="/" component={Root} />
-        </Switch>
+        <ProfileProvider>
+          <Switch>
+            <Route exact path="/" component={Root} />
+          </Switch>
+        </ProfileProvider>
       ) : (
         <Switch>
           <Route exact path="/" component={Login} />
