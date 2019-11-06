@@ -20,7 +20,7 @@ const Login: React.FunctionComponent = () => {
   return (
     <Centerer>
       <Branding />
-      <Button variant="secondary" gutterTop onClick={login}>
+      <Button variant="secondary" gutterTop onClick={login} disabled={!userContext.data.hasLoadedUser}>
         {!userContext.data.hasLoadedUser ? 'Hold on...' : 'Log in with Google'}
       </Button>
     </Centerer>
