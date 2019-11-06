@@ -4,7 +4,9 @@ const colors = {
   text: '#222'
 };
 
-const layout = {};
+const layout = {
+  sidebarWidth: 80
+};
 
 const transitions = {
   fast: '0.15s ease-in-out'
