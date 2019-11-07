@@ -13,7 +13,7 @@ const App: React.FunctionComponent = () => {
       {userContext.data.loggedIn ? (
         <ProfileProvider>
           <Switch>
-            <Route exact path="/" component={Root} />
+            <Route path="/" component={Root} />
           </Switch>
         </ProfileProvider>
       ) : (

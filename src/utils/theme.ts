@@ -1,7 +1,7 @@
 const colors = {
   primary: '#05d8a7',
   secondary: '#1e3f5a',
-  text: '#222'
+  text: '#333'
 };
 
 const layout = {
@@ -35,7 +35,7 @@ const fonts = {
   title: {
     family: '"Open sans", sans-serif',
     weight: 700,
-    size: 3
+    size: 2.5
   },
   subtitle: {
     family: '"Open sans", sans-serif',
