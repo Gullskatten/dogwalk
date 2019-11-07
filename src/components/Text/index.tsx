@@ -31,13 +31,13 @@ const StyledText = styled.p<Props>`
   ${props =>
     props.gutterBottom &&
     css`
-      margin-bottom: ${props.theme.spacing.medium}px;
+      margin-bottom: ${props.theme.spacing.medium}rem;
     `};
 
   ${props =>
     props.gutterTop &&
     css`
-      margin-top: ${props.theme.spacing.medium}px;
+      margin-top: ${props.theme.spacing.medium}rem;
     `};
 `;
 

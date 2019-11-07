@@ -5,7 +5,7 @@ const colors = {
 };
 
 const layout = {
-  sidebarWidth: 80
+  sidebarWidth: 230
 };
 
 const transitions = {
@@ -13,11 +13,11 @@ const transitions = {
 };
 
 const spacing = {
-  xsmall: 4,
-  small: 8,
-  medium: 16,
-  large: 32,
-  xlarge: 42
+  xsmall: 0.25,
+  small: 0.5,
+  medium: 1,
+  large: 2,
+  xlarge: 2.5
 };
 
 const screenSizes = {
@@ -35,12 +35,12 @@ const fonts = {
   title: {
     family: '"Open sans", sans-serif',
     weight: 700,
-    size: 2.5
+    size: 2
   },
   subtitle: {
     family: '"Open sans", sans-serif',
     weight: 600,
-    size: 2
+    size: 1.65
   },
   body: {
     family: '"Open sans", sans-serif',

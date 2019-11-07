@@ -5,6 +5,7 @@ import { UserContext } from '../../context/User';
 import { NavLink, Link } from 'react-router-dom';
 import Avatar from '../Avatar';
 import useAuth from '../../hooks/useAuth';
+import truncate from '../../utils/truncate';
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -13,14 +14,21 @@ const Wrapper = styled.nav`
   height: 100vh;
   width: ${props => props.theme.layout.sidebarWidth}px;
   background-color: ${props => props.theme.colors.secondary};
-  padding: ${props => props.theme.spacing.medium}px 0;
+  padding: ${props => props.theme.spacing.medium}rem;
 `;
 
 const UserWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  padding-bottom: ${props => props.theme.spacing.medium}px;
+  padding-bottom: ${props => props.theme.spacing.medium}rem;
   border-bottom: 1px solid ${props => props.theme.colors.primary};
+  align-items: center;
+`;
+
+const DisplayName = styled.div`
+  margin-left: ${props => props.theme.spacing.medium}rem;
+  display: flex;
+  flex: 1;
+  color: #fff;
 `;
 
 const List = styled.ul`
@@ -30,19 +38,26 @@ const List = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  align-items: center;
-  padding-top: ${props => props.theme.spacing.medium}px;
+  padding-top: ${props => props.theme.spacing.medium}rem;
 `;
 
 const ListItem = styled.li`
-  margin-bottom: ${props => props.theme.spacing.medium}px;
-
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: ${props => props.theme.transitions.fast};
+    padding: ${props => props.theme.spacing.small}rem 0;
+
+    &.active {
+      color: ${props => props.theme.colors.primary};
+    }
 
     svg {
       transition: ${props => props.theme.transitions.fast};
       color: #fff;
+      margin-right: ${props => props.theme.spacing.medium}rem;
     }
 
     &.active {
@@ -51,7 +66,11 @@ const ListItem = styled.li`
       }
     }
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active {
+      color: ${props => props.theme.colors.primary};
+
       svg {
         color: ${props => props.theme.colors.primary};
       }
@@ -82,23 +101,27 @@ const Sidebar: React.FunctionComponent<Props> = () => {
           title={userContext.data.displayName}
           src={userContext.data.photoURL}
         />
+        <DisplayName>{truncate(userContext.data.displayName, 20)}</DisplayName>
       </UserWrapper>
       <List>
         <ListItem>
           <NavLink to="/" aria-label="Home link" exact>
-            <IoMdHome size="2rem" aria-hidden="true" />
+            <IoMdHome aria-hidden="true" />
+            Dashboard
           </NavLink>
         </ListItem>
 
         <ListItem>
           <NavLink to="/settings" aria-label="Settings link" exact>
-            <IoIosSettings size="2rem" aria-hidden="true" />
+            <IoIosSettings aria-hidden="true" />
+            Settings
           </NavLink>
         </ListItem>
 
         <ListItem>
           <Link to="#" onClick={handleLogoutEvent}>
-            <IoIosLogOut size="2rem" aria-hidden="true" />
+            <IoIosLogOut aria-hidden="true" />
+            Sign out
           </Link>
         </ListItem>
       </List>

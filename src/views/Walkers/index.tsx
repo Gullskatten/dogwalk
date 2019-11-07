@@ -7,7 +7,9 @@ const Walkers: React.FunctionComponent = () => {
 
   return (
     <>
-      <Text variant="title">Hello, {userContext.data.displayName}!</Text>
+      <Text element="h1" variant="title">
+        Hello, {userContext.data.displayName}!
+      </Text>
     </>
   );
 };
