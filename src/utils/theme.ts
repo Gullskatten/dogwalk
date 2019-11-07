@@ -5,7 +5,10 @@ const colors = {
 };
 
 const layout = {
-  sidebarWidth: 230
+  sidebarWidth: {
+    desktop: 230,
+    mobile: 80
+  }
 };
 
 const transitions = {

@@ -9,9 +9,16 @@ import Settings from '../Settings';
 const MainView = styled.main`
   margin-right: auto;
   margin-left: ${props =>
-    `calc(${props.theme.layout.sidebarWidth}px + ${props.theme.spacing.small}rem)`};
+    `calc(${props.theme.layout.sidebarWidth.mobile}px + ${props.theme.spacing.small}rem)`};
   width: ${props =>
-    `calc(100% - ${props.theme.layout.sidebarWidth}px - ${props.theme.spacing.medium}rem)`};
+    `calc(100% - ${props.theme.layout.sidebarWidth.mobile}px - ${props.theme.spacing.medium}rem)`};
+
+  @media all and (min-width: ${props => props.theme.screenSizes.mobile}px) {
+    margin-left: ${props =>
+      `calc(${props.theme.layout.sidebarWidth.desktop}px + ${props.theme.spacing.small}rem)`};
+    width: ${props =>
+      `calc(100% - ${props.theme.layout.sidebarWidth.desktop}px - ${props.theme.spacing.medium}rem)`};
+  }
 `;
 
 const Root: React.FunctionComponent = () => {

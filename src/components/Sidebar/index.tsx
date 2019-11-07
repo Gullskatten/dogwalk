@@ -12,9 +12,22 @@ const Wrapper = styled.nav`
   top: 0;
   left: 0;
   height: 100vh;
-  width: ${props => props.theme.layout.sidebarWidth}px;
   background-color: ${props => props.theme.colors.secondary};
+  width: ${props => props.theme.layout.sidebarWidth.mobile}px;
   padding: ${props => props.theme.spacing.medium}rem;
+
+  @media all and (min-width: ${props => props.theme.screenSizes.mobile}px) {
+    width: ${props => props.theme.layout.sidebarWidth.desktop}px;
+    display: inline;
+  }
+`;
+
+const MobileHider = styled.span`
+  display: none;
+
+  @media all and (min-width: ${props => props.theme.screenSizes.mobile}px) {
+    display: inline;
+  }
 `;
 
 const UserWrapper = styled.div`
@@ -39,6 +52,11 @@ const List = styled.ul`
   margin: 0;
   padding: 0;
   padding-top: ${props => props.theme.spacing.medium}rem;
+  align-items: center;
+
+  @media all and (min-width: ${props => props.theme.screenSizes.mobile}px) {
+    align-items: flex-start;
+  }
 `;
 
 const ListItem = styled.li`
@@ -48,7 +66,12 @@ const ListItem = styled.li`
     color: #fff;
     text-decoration: none;
     transition: ${props => props.theme.transitions.fast};
-    padding: ${props => props.theme.spacing.small}rem 0;
+    margin: ${props => props.theme.spacing.medium}rem 0;
+
+    @media all and (min-width: ${props => props.theme.screenSizes.mobile}px) {
+      padding: ${props => props.theme.spacing.small}rem 0;
+      margin: 0;
+    }
 
     &.active {
       color: ${props => props.theme.colors.primary};
@@ -57,7 +80,14 @@ const ListItem = styled.li`
     svg {
       transition: ${props => props.theme.transitions.fast};
       color: #fff;
-      margin-right: ${props => props.theme.spacing.medium}rem;
+      width: 32px;
+      height: 32px;
+
+      @media all and (min-width: ${props => props.theme.screenSizes.mobile}px) {
+        margin-right: ${props => props.theme.spacing.medium}rem;
+        width: auto;
+        height: auto;
+      }
     }
 
     &.active {
@@ -78,9 +108,7 @@ const ListItem = styled.li`
   }
 `;
 
-interface Props {}
-
-const Sidebar: React.FunctionComponent<Props> = () => {
+const Sidebar: React.FunctionComponent = () => {
   const userContext = React.useContext(UserContext);
   const { logout } = useAuth();
 
@@ -101,27 +129,31 @@ const Sidebar: React.FunctionComponent<Props> = () => {
           title={userContext.data.displayName}
           src={userContext.data.photoURL}
         />
-        <DisplayName>{truncate(userContext.data.displayName, 20)}</DisplayName>
+        <MobileHider>
+          <DisplayName>
+            {truncate(userContext.data.displayName, 20)}
+          </DisplayName>
+        </MobileHider>
       </UserWrapper>
       <List>
         <ListItem>
           <NavLink to="/" aria-label="Home link" exact>
             <IoMdHome aria-hidden="true" />
-            Dashboard
+            <MobileHider>Dashboard</MobileHider>
           </NavLink>
         </ListItem>
 
         <ListItem>
           <NavLink to="/settings" aria-label="Settings link" exact>
             <IoIosSettings aria-hidden="true" />
-            Settings
+            <MobileHider>Settings</MobileHider>
           </NavLink>
         </ListItem>
 
         <ListItem>
-          <Link to="#" onClick={handleLogoutEvent}>
+          <Link to="#" onClick={handleLogoutEvent} aria-label="Sign out">
             <IoIosLogOut aria-hidden="true" />
-            Sign out
+            <MobileHider>Sign out</MobileHider>
           </Link>
         </ListItem>
       </List>
