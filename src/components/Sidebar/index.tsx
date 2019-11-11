@@ -73,7 +73,7 @@ const ListItem = styled.li`
       margin: 0;
     }
 
-    &.active {
+    &:active {
       color: ${props => props.theme.colors.primary};
     }
 
@@ -90,7 +90,7 @@ const ListItem = styled.li`
       }
     }
 
-    &.active {
+    &:active {
       svg {
         color: ${props => props.theme.colors.primary};
       }
