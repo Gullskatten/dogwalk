@@ -6,7 +6,6 @@ import * as serviceWorker from './serviceWorker';
 import theme from './utils/theme';
 import { UserProvider } from './context/User';
 import GlobalStyle from './components/GlobalStyle';
-import 'react-tippy/dist/tippy.css';
 
 const application = (
   <ThemeProvider theme={theme}>
