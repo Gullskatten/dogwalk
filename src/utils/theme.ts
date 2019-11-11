@@ -1,21 +1,26 @@
 const colors = {
   primary: '#05d8a7',
   secondary: '#1e3f5a',
-  text: '#222'
+  text: '#333'
 };
 
-const layout = {};
+const layout = {
+  sidebarWidth: {
+    desktop: 230,
+    mobile: 80
+  }
+};
 
 const transitions = {
   fast: '0.15s ease-in-out'
 };
 
 const spacing = {
-  xsmall: 4,
-  small: 8,
-  medium: 16,
-  large: 32,
-  xlarge: 42
+  xsmall: 0.25,
+  small: 0.5,
+  medium: 1,
+  large: 2,
+  xlarge: 2.5
 };
 
 const screenSizes = {
@@ -33,12 +38,12 @@ const fonts = {
   title: {
     family: '"Open sans", sans-serif',
     weight: 700,
-    size: 3
+    size: 2
   },
   subtitle: {
     family: '"Open sans", sans-serif',
     weight: 600,
-    size: 2
+    size: 1.65
   },
   body: {
     family: '"Open sans", sans-serif',

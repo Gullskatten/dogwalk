@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     ${props => createFontStyles(props.theme.fonts.body)};
+    color: ${props => props.theme.colors.text};
   }
 
 code {

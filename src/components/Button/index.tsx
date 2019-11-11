@@ -12,7 +12,7 @@ interface ButtonProps {
 const Button = styled.button<ButtonProps>`
   cursor: pointer;
   padding: ${props =>
-    `${props.theme.spacing.small}px ${props.theme.spacing.large}px`};
+    `${props.theme.spacing.small}rem ${props.theme.spacing.large}rem`};
   background-color: ${props => props.theme.colors.primary};
   border: 2px solid transparent;
   border-radius: 100px;
@@ -49,13 +49,13 @@ const Button = styled.button<ButtonProps>`
   ${props =>
     props.gutterTop &&
     css`
-      margin-top: ${props.theme.spacing.medium}px;
+      margin-top: ${props.theme.spacing.medium}rem;
     `};
 
   ${props =>
     props.gutterBottom &&
     css`
-      margin-bottom: ${props.theme.spacing.medium}px;
+      margin-bottom: ${props.theme.spacing.medium}rem;
     `};
 `;
 
